@@ -1,5 +1,6 @@
 import ballerinax/trigger.google.calendar;
 import ballerina/http;
+import ballerina/log;
 
 configurable calendar:ListenerConfig config = ?;
 
@@ -9,13 +10,13 @@ listener calendar:Listener webhookListener =  new(config,httpListener);
 service calendar:CalendarService on webhookListener {
   
     remote function onNewEvent(calendar:Event payload ) returns error? {
-      //Not Implemented
+      log:printInfo("Created new event");
     }
     remote function onEventUpdate(calendar:Event payload ) returns error? {
-      //Not Implemented
+      log:printInfo("Updated event");
     }
     remote function onEventDelete(calendar:Event payload ) returns error? {
-      //Not Implemented
+      log:printInfo("Deleted event");
     }
 }
 
